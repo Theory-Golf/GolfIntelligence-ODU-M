@@ -1,17 +1,4 @@
-# golf-dashboard-master
-master dashboard code file
+Men Google Database
 
-Google Sheet URL 
-https://docs.google.com/spreadsheets/d/e/2PACX-1vTZZ8-dHrvrfl8YQnRSLpCYS6GjTHpXQm2uVuqS0X5t3yOxhciFnvxlLSSMX_gplveVmlP5Uz8nOmJF/pub?gid=0&single=true&output=csv
+https://docs.google.com/spreadsheets/d/1IngfnPqCz9eP3KTfv5jEhElk7C9ap4WAwCOJQ_i6J_8/edit?gid=1977391896#gid=1977391896
 
-
-Data Import
-
-Engines
-    Overview
-    Driving
-    Approach - with ai
-    Putting - With ai
-    Short Game - with AI
-    Coachs Corner - with AI
-    Tiger 5
