@@ -50,10 +50,10 @@ def load_data():
     """
     df = pd.read_csv(SHEET_URL)
 
-    # Clean strings
-    df['Player'] = df['Player'].str.strip().str.title()
-    df['Course'] = df['Course'].str.strip().str.title()
-    df['Tournament'] = df['Tournament'].str.strip().str.title()
+    # Clean strings - use astype(str) to handle empty/null data
+    df['Player'] = df['Player'].astype(str).str.strip().str.title()
+    df['Course'] = df['Course'].astype(str).str.strip().str.title()
+    df['Tournament'] = df['Tournament'].astype(str).str.strip().str.title()
 
     # Rename columns to match expected schema
     df = df.rename(columns={
