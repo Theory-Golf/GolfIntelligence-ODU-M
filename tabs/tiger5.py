@@ -31,8 +31,15 @@ def tiger5_tab(filtered_df, hole_summary, tiger5_results, total_tiger5_fails, nu
     }
 
     # ----------------------------------------------------------------
-    # HERO CARD — TOTAL TIGER 5 FAILS
+    # HERO CARDS — FIRST ROW (3 columns)
     # ----------------------------------------------------------------
+    # Calculate scoring stats from hole_summary
+    avg_score = hole_summary['Hole Score'].mean() if not hole_summary.empty else 0
+    lowest_score = hole_summary['Hole Score'].min() if not hole_summary.empty else 0
+    highest_score = hole_summary['Hole Score'].max() if not hole_summary.empty else 0
+    num_players = filtered_df['Player'].nunique()
+    num_courses = filtered_df['Course'].nunique()
+
     # Calculate fails per round and determine sentiment
     fails_per_round = total_tiger5_fails / num_rounds if num_rounds > 0 else 0
 
@@ -48,15 +55,35 @@ def tiger5_tab(filtered_df, hole_summary, tiger5_results, total_tiger5_fails, nu
     most_common_display = T5_DISPLAY_NAMES.get(most_common_fail, most_common_fail)
     most_common_count = tiger5_results[most_common_fail]['fails']
 
-    premium_hero_card(
-        "Total Tiger 5 Fails",
-        str(total_tiger5_fails),
-        (
-            f"{fails_per_round:.1f} per round · {num_rounds} rounds  |  "
-            f"Most common: {most_common_display} ({most_common_count})"
-        ),
-        sentiment=sentiment,
-    )
+    # Render three hero cards in columns
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        premium_hero_card(
+            "Total Tiger 5 Fails",
+            str(total_tiger5_fails),
+            (
+                f"{fails_per_round:.1f} per round · {num_rounds} rounds  |  "
+                f"Most common: {most_common_display} ({most_common_count})"
+            ),
+            sentiment=sentiment,
+        )
+
+    with col2:
+        premium_hero_card(
+            "Average Score",
+            f"{avg_score:.1f}",
+            f"Lowest: {int(lowest_score)} | Highest: {int(highest_score)}",
+            sentiment="neutral",
+        )
+
+    with col3:
+        premium_hero_card(
+            "Total Rounds",
+            str(num_rounds),
+            f"{num_players} players · {num_courses} courses",
+            sentiment="neutral",
+        )
 
     # ----------------------------------------------------------------
     # TIGER 5 PERFORMANCE CARDS

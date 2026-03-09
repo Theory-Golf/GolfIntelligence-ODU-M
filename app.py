@@ -46,7 +46,7 @@ inject_css()
 # ============================================================
 
 with st.sidebar:
-    sidebar_title("Golf Analytics")
+    sidebar_title("Golf Intelligence", "By: Theory Golf")
 
     sidebar_label("SG Benchmark")
     benchmark_choice = st.selectbox(

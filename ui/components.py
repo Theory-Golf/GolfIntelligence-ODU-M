@@ -464,13 +464,25 @@ def player_path_root_cause_card(rc):
 
 # ---- Sidebar helpers ------------------------------------------------
 
-def sidebar_title(text):
-    st.markdown(
-        f'<p style="font-family:{FONT_HEADING};font-size:1.4rem;font-weight:600;'
-        f'color:{ACCENT_PRIMARY};margin-bottom:0.5rem;padding-bottom:1rem;'
-        f'border-bottom:1px solid {BORDER_LIGHT};">{text}</p>',
-        unsafe_allow_html=True,
-    )
+def sidebar_title(text, subtitle=""):
+    """Render sidebar title with optional subtitle on second line."""
+    if subtitle:
+        st.markdown(
+            f'<p style="font-family:{FONT_HEADING};font-size:1.4rem;font-weight:600;'
+            f'color:{ACCENT_PRIMARY};margin-bottom:0.25rem;padding-bottom:0rem;'
+            f'border-bottom:1px solid {BORDER_LIGHT};">{text}</p>'
+            f'<p style="font-family:{FONT_DATA};font-size:0.75rem;font-weight:400;'
+            f'color:{ACCENT_SECONDARY};margin-bottom:0.75rem;padding-bottom:0.75rem;'
+            f'border-bottom:1px solid {BORDER_LIGHT};">{subtitle}</p>',
+            unsafe_allow_html=True,
+        )
+    else:
+        st.markdown(
+            f'<p style="font-family:{FONT_HEADING};font-size:1.4rem;font-weight:600;'
+            f'color:{ACCENT_PRIMARY};margin-bottom:0.5rem;padding-bottom:1rem;'
+            f'border-bottom:1px solid {BORDER_LIGHT};">{text}</p>',
+            unsafe_allow_html=True,
+        )
 
 
 def sidebar_label(text):
