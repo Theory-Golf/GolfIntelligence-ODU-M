@@ -203,7 +203,7 @@ filtered_df = df[
     & (df['_date'] <= date_range[1])
 ].copy()
 
-num_rounds = filtered_df[['_date', 'Course']].drop_duplicates().shape[0]
+num_rounds = filtered_df['Round ID'].nunique()
 
 # ============================================================
 # HOLE SUMMARY

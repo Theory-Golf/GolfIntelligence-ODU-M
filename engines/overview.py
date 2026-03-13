@@ -17,7 +17,7 @@ def overview_engine(df, hole_summary, driving_results, approach_results,
     # -----------------------------
     total_sg = df['Strokes Gained'].sum()
 
-    num_rounds = df[['_date', 'Course']].drop_duplicates().shape[0]
+    num_rounds = df['Round ID'].nunique()
 
     # -----------------------------
     # SG BY CATEGORY

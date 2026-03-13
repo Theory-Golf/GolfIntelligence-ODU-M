@@ -35,7 +35,7 @@ def tiger5_tab(filtered_df, hole_summary, tiger5_results, total_tiger5_fails, nu
     # ----------------------------------------------------------------
     # Calculate scoring stats from hole_summary (per-round totals)
     if not hole_summary.empty:
-        round_totals = hole_summary.groupby(['Date', 'Course'])['Hole Score'].sum()
+        round_totals = hole_summary.groupby('Round ID')['Hole Score'].sum()
         avg_score = round_totals.mean()
         lowest_score = round_totals.min()
         highest_score = round_totals.max()

@@ -82,6 +82,9 @@ def load_data():
         axis=1
     )
 
+    # Deduplicate — drop exact duplicate rows caused by rounds being uploaded twice
+    df = df.drop_duplicates(subset=['Player', 'Round ID', 'Hole', 'Shot'])
+
     # Unique shot ID
     df['Shot ID'] = (
         df['Round ID'] +
