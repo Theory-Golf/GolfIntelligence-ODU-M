@@ -21,7 +21,7 @@ def _calculate_player_metrics(player, tournament, player_df, player_holes):
         dict with all metric values for one row
     """
     # Basic metrics
-    num_rounds = player_df['Round ID'].nunique() if not player_df.empty else 0
+    num_rounds = player_df[['_date', 'Course']].drop_duplicates().shape[0] if not player_df.empty else 0
 
     if num_rounds == 0 or player_holes.empty:
         # Return zeros for all metrics if no data
