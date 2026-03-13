@@ -33,10 +33,16 @@ def tiger5_tab(filtered_df, hole_summary, tiger5_results, total_tiger5_fails, nu
     # ----------------------------------------------------------------
     # HERO CARDS — FIRST ROW (3 columns)
     # ----------------------------------------------------------------
-    # Calculate scoring stats from hole_summary
-    avg_score = hole_summary['Hole Score'].mean() if not hole_summary.empty else 0
-    lowest_score = hole_summary['Hole Score'].min() if not hole_summary.empty else 0
-    highest_score = hole_summary['Hole Score'].max() if not hole_summary.empty else 0
+    # Calculate scoring stats from hole_summary (per-round totals)
+    if not hole_summary.empty:
+        round_totals = hole_summary.groupby('Round ID')['Hole Score'].sum()
+        avg_score = round_totals.mean()
+        lowest_score = round_totals.min()
+        highest_score = round_totals.max()
+    else:
+        avg_score = 0
+        lowest_score = 0
+        highest_score = 0
     num_players = filtered_df['Player'].nunique()
     num_courses = filtered_df['Course'].nunique()
 
