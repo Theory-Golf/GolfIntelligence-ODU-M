@@ -54,6 +54,7 @@ def load_data():
     df['Player'] = df['Player'].astype(str).str.strip().str.title()
     df['Course'] = df['Course'].astype(str).str.strip().str.title()
     df['Tournament'] = df['Tournament'].astype(str).str.strip().str.title()
+    df['Round ID'] = df['Round ID'].astype(str).str.strip()
 
     # Rename columns to match expected schema
     df = df.rename(columns={
